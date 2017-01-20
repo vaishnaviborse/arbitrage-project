@@ -1,0 +1,101 @@
+<!-- DOCTYPE html -->
+<html>
+<head>
+<title>AngularJs</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-route.min.js"></script>
+<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+<script src="app.js"></script>
+<link rel="stylesheet" href="style.css">
+
+</head>
+<body ng-app="postserviceApp">
+
+
+<ng-view></ng-view>
+
+<script type="text/ng-template" id="recomm.html">
+<div ng-app="postserviceApp" ng-controller="recommCtrl">
+
+<h1>Recommendations</h1>
+
+{{alldata}}
+{{trial}}
+ <table>
+    <tr ng-repeat="x in alldata">
+	  <td>{{ alldata.x.id }}</td>
+      <td>{{ alldata.x.t }}</td>
+	  <td>{{ alldata.x.e }}</td>
+      <td>{{ alldata.x.l }}</td>
+    </tr>
+  </table>
+</div>
+</script>
+
+<script type="text/ng-template" id=home.html>
+<h1>
+{{message}}
+</h1>
+<div ng-app="postserviceApp" ng-controller="recommCtrl">
+<input type="button" value="recommend" ng-click="clicked()">
+</input>
+{{msg}}
+<br>
+{{msgf}}
+</div>
+</script>
+
+<script type="text/ng-template" id="login.html">
+<h1>{{message}}</h1>
+            <div class="container-fluid bg-2 text-center">
+              <h3 class="margin">Who are we?</h3>
+              <p>
+                  
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Respondent extrema primis, media utrisque, omnia omnibus. Quid de Pythagora? Piso igitur hoc modo, vir optimus tuique, ut scis, amantissimus. Ergo id est convenienter naturae vivere, a natura discedere. Quid, de quo nulla dissensio est? Duo Reges: constructio interrete. Aliud igitur esse censet gaudere, aliud non dolere. Teneo, inquit, finem illi videri nihil dolere.</p>
+            </div>
+
+<br> <br>
+<div ng-app="postserviceApp" ng-controller="postserviceCtrl">
+
+<!-- starts -->
+    
+    <div class="container">
+            <div class="box">
+            <div class="container-fluid text-center">
+                
+                <!--Taking input as username-->
+                <div>    
+                    <i class="material-icons" style="font-size:48px;color:dimgrey">account_circle</i>
+                    <br>
+                    <input type="text" class="form-control" ng-model="username" placeholder="Enter username here" required/> <br>  
+                </div>     
+                
+                <!--Taking input as password-->
+                <div>    
+                    <i class="material-icons" style="font-size:48px;color:dimgrey">lock</i>
+                    <br>
+                    <input type="password" class="form-control" ng-model="password" placeholder="Enter password here" required/><br><br> 
+                </div>
+                    
+                <div class="form-group">
+                    <input type="button" value="Send" class="btn btn-info btn-lg" ng-click="postdata(username, password)" /> <br> <br>
+                    <span class="text-danger">{{msg}}</span>
+                </div>
+        </div>
+    </div>
+</div>
+
+</div>
+
+		</script>
+
+</body>
+</html>
