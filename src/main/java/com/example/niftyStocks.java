@@ -17,15 +17,15 @@ import org.springframework.web.util.UriComponentsBuilder;
 import com.google.gson.Gson;
 
 @RestController
-public class ApplicationController {
+public class niftyStocks {
 	@Autowired
 		RestTemplate restTemplate;
 	
 	@Autowired
 		Arbitrage arbitrage;
 	
-	@RequestMapping(value = "/get-acc-data", method = RequestMethod.GET)
-	public Stock[] getLivedata() {
+	@RequestMapping(value = "/nifty-data", method = RequestMethod.GET)
+	public RootObject[] getLivedata() {
 		String liveData = restTemplate.getForObject("http://finance.google.com/finance/info?q=NSE:ACC,BSE:500410,NSE:ADANIPORTS,BSE:532921,NSE:AMBUJACEM,BSE:500425,NSE:ASIANPAINT,BSE:500820,NSE:AXISBANK,BSE:532215,"
 				+ "NSE:BAJAJ-AUTO,BSE:532977,NSE:BANKBARODA,BSE:532134,NSE:BHEL,BSE:500103,NSE:BPCL,BSE:500547,NSE:BHARTIARTL,BSE:532454,NSE:BOSCHLTD,BSE:500530,"
 				+"NSE:CAIRN,BSE:532792,NSE:CIPLA,BSE:500087,NSE:COALINDIA,BSE:533278,"
@@ -50,11 +50,8 @@ public class ApplicationController {
 		
 		Gson gsonMapper = new Gson();
 		RootObject[] liveDataArray  =gsonMapper.fromJson(resultAsJsonString, RootObject[].class);
-		
-		Stock[] stocktop=new Stock[5];
-		stocktop = arbitrage.stockInput(liveDataArray);
-		
-		return stocktop;
+
+		return liveDataArray;
 	}
 	@Bean
 	public RootObject rootObjec() {

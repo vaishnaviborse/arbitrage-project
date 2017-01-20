@@ -14,8 +14,12 @@ app.config(function($routeProvider) {
 	})
 	
 	.when('/recommend', {
-		templateUrl : 'recomm.html',
+		templateUrl : 'recommend.html',
 		controller: 'recommCtrl'
+	})
+	.when('/show', {
+		templateUrl : 'show.html',
+		controller: 'showRecCtrl'
 	})
 	
 	.otherwise({ redirectTo: '/' });
@@ -27,8 +31,23 @@ app.controller('loginCtrl', function($scope){
 	$scope.message = "Hello, this is login";
 });
 
-app.controller('homeCtrl', function($scope){
+app.controller('homeCtrl', function($scope, $http, $location){
 	$scope.message = "Hello, this is home";
+
+	    $http.get('/nifty-data').then(
+				function(response) {
+					if (response.data) {
+						$scope.ndata = response.data;
+						console.log($scope.ndata);
+					} else {
+						$scope.msg = "error";
+					}
+				}, function(response) {
+					$scope.msg = "Unsuccessful";
+					$scope.statusval = response.status;
+					$scope.statustext = response.statusText;
+					$scope.headers = response.headers();
+				});
 });
 
 app.controller('postserviceCtrl', function($scope, $http, $location) {
@@ -67,17 +86,15 @@ app.controller('postserviceCtrl', function($scope, $http, $location) {
 });
 
 
-app.controller('recommCtrl', function($scope, $http, $location){
-	$scope.msg = "yo bro";
+app.controller('recommendCtrl', function($scope, $http, $location){
 	$scope.clicked = function(){  
     
     $http.get('/get-acc-data').then(
 			function(response) {
 				if (response.data) {
 					$scope.alldata = response.data;
-					$scope.trial="trial";
-					console.log($scope.alldata);
-					$location.path('/recommend');
+					$scope.message="Recommendations";
+					$location.path('/show');
 				} else {
 					$scope.msg = "error";
 				}
@@ -89,4 +106,22 @@ app.controller('recommCtrl', function($scope, $http, $location){
 			});
     };
 });
+    app.controller('showRecCtrl', function($scope, $http, $location){
+
+    	    $http.get('/get-acc-data').then(
+    				function(response) {
+    					if (response.data) {
+    						$scope.recdata = response.data;
+    						console.log($scope.recdata);
+    					} else {
+    						$scope.msg = "error";
+    					}
+    				}, function(response) {
+    					$scope.msg = "Unsuccessful";
+    					$scope.statusval = response.status;
+    					$scope.statustext = response.statusText;
+    					$scope.headers = response.headers();
+    				});
+    });
+
 

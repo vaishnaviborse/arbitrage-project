@@ -22,34 +22,64 @@
 
 <ng-view></ng-view>
 
-<script type="text/ng-template" id="recomm.html">
-<div ng-app="postserviceApp" ng-controller="recommCtrl">
+<script type="text/ng-template" id="show.html">
+<font color="black"><center><h1>Recommendations<h1></center>
+<div ng-app="postserviceApp" ng-controller="showRecCtrl">
+</div>
 
-<h1>Recommendations</h1>
-
-{{alldata}}
-{{trial}}
- <table>
-    <tr ng-repeat="x in alldata">
-	  <td>{{ alldata.x.id }}</td>
-      <td>{{ alldata.x.t }}</td>
-	  <td>{{ alldata.x.e }}</td>
-      <td>{{ alldata.x.l }}</td>
+<table width="220" style="color:black">
+<tr>
+    <th>Company Name</th>
+    <th>Difference</th> 
+    <th>Higher</th>
+	<th>Date&Time</th>
+  </tr>
+    <tr ng-repeat="x in recdata | limitTo:5">
+	  <td>{{ x.name }}</td>
+      <td>{{ x.diff }}</td>
+	  <td>{{ x.higher }}</td>
+      <td>{{ x.dt }}</td>
     </tr>
   </table>
+</font>
+
+</div>
+</script>
+
+
+<script type="text/ng-template" id="recommend.html">
+<div ng-app="postserviceApp" ng-controller="recommendCtrl">
+ 
 </div>
 </script>
 
 <script type="text/ng-template" id=home.html>
-<h1>
-{{message}}
-</h1>
-<div ng-app="postserviceApp" ng-controller="recommCtrl">
-<input type="button" value="recommend" ng-click="clicked()">
+
+<div ng-app="postserviceApp" ng-controller="recommendCtrl">
+<center><input type="button" value="recommend" ng-click="clicked()"></center>
 </input>
 {{msg}}
 <br>
-{{msgf}}
+</div>
+
+<div ng-app="postserviceApp" ng-controller="homeCtrl">
+<h1>
+{{message}}
+</h1>
+ <table width="180" style="color:black">
+<tr>
+    <th>Company Name</th>
+    <th>NSE/BSE</th> 
+    <th>Price</th>
+	<th>Date&Time</th>
+  </tr>
+    <tr ng-repeat="x in ndata">
+      <td>{{ x.t }}</td>
+	  <td>{{ x.e }}</td>
+      <td>{{ x.l }}</td>
+	<td>{{x.ltDts}}</td>
+    </tr>
+  </table>
 </div>
 </script>
 
@@ -66,7 +96,7 @@
 <div ng-app="postserviceApp" ng-controller="postserviceCtrl">
 
 <!-- starts -->
-    
+    <center>
     <div class="container">
             <div class="box">
             <div class="container-fluid text-center">
@@ -92,6 +122,7 @@
         </div>
     </div>
 </div>
+</center>
 
 </div>
 
