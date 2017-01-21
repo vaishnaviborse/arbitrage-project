@@ -4,129 +4,226 @@
 <title>AngularJs</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-route.min.js"></script>
-<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	
+	
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+	rel="stylesheet">
+    
+   
+<script
+	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-route.min.js"></script>
+<link href="https://fonts.googleapis.com/css?family=Montserrat"
+	rel="stylesheet">
+	<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/ng-table/1.0.0/ng-table.js"></script>
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/ng-table/1.0.0/ng-table.css" />
 <script src="app.js"></script>
 <link rel="stylesheet" href="style.css">
 
 </head>
+
 <body ng-app="postserviceApp">
+	<ng-view></ng-view>
 
 
-<ng-view></ng-view>
+	<!-- Page 1 = Login -->
+	<script type="text/ng-template" id="login.html">
+<h1>{{message}}</h1>
+            <div class="container-fluid bg-2 text-center">
+              <h3 class="margin">Who are we?</h3>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Respondent extrema primis, media utrisque, omnia omnibus. Quid de Pythagora? Piso igitur hoc modo, vir optimus tuique, ut scis, amantissimus. Ergo id est convenienter naturae vivere, a natura discedere. Quid, de quo nulla dissensio est? Duo Reges: constructio interrete. Aliud igitur esse censet gaudere, aliud non dolere. Teneo, inquit, finem illi videri nihil dolere.</p>
+                
+          <button type="button" class="btn btn-info btn-lg" data-toggle="collapse" data-target="#demo">How to play the arbitrage game</button> <br>
+          <div id="demo" class="collapse">
+              <p>
+            Arbitrage, in layman’s terms, involves simultaneously buying and selling the same asset across two different markets, profiting from the price difference. Many times, arbitrage is considered to be risk-free as the two simultaneous acts automatically hedge the price risk of the asset going up or down in value. Let’s take an example. Suppose Reliance Industries’ shares are trading at ₹860 on the BSE and at ₹862 on the NSE. One could simply purchase the shares at ₹860 from the BSE and sell the same quantity at ₹862 on the NSE.
+                In most equity markets, the trader can immediately claim a profit of ₹2; however, since cross clearing has not been approved in India, the trader would need to sell the BSE shares and purchase back the NSE shares within the same day to capture the ₹2 profit.</p>
+          </div>
+        </div>
+                
+        
+        <br> <br>
 
-<script type="text/ng-template" id="show.html">
-<font color="black"><center><h1>Recommendations<h1></center>
-<div ng-app="postserviceApp" ng-controller="showRecCtrl">
+<div ng-app="postserviceApp" ng-controller="postserviceCtrl">
+    <center>
+    <div class="container">
+            <div class="box">
+            <div class="container-fluid text-center">
+                <form>
+                <!--Taking input as username-->
+                <div>    
+                    <i class="material-icons">account_circle</i>
+                    <br>
+                    <input type="text" class="form-control" ng-model="username" placeholder="Enter username here" required> <br>  
+                </div>     
+                
+                <!--Taking input as password-->
+                <div>    
+                    <i class="material-icons">lock</i>
+                    <br>
+                    <input type="password" class="form-control" ng-model="password" placeholder="Enter password here" required><br>
+                </div>
+                    
+                <div class="form-group">
+                    <input type="button" value="Login" class="btn btn-info btn-lg" ng-click="postdata(username, password)" /> <br> <br>
+                    <span class="text-danger">{{msg}}</span>
+                </div>
+                </form>
+        </div>
+    </div>
 </div>
-
-<table width="220" style="color:black">
-<tr>
-    <th>Company Name</th>
-    <th>Difference</th> 
-    <th>Higher</th>
-	<th>Date&Time</th>
-  </tr>
-    <tr ng-repeat="x in recdata | limitTo:5">
-	  <td>{{ x.name }}</td>
-      <td>{{ x.diff }}</td>
-	  <td>{{ x.higher }}</td>
-      <td>{{ x.dt }}</td>
-    </tr>
-  </table>
-</font>
-
+</center>
 </div>
+    
+    <br> <br>
+    <div class="row">
+    <div class="container-fluid bg-2 text-center">
+              <h3 class="margin">Get in touch</h3>
+              <p>Contact number: Address: </p>
+        <p>Curated by: ARS inc. ltd.</p>
+    
+    </div>
+    </div>
+    
+    
 </script>
 
 
-<script type="text/ng-template" id="recommend.html">
-<div ng-app="postserviceApp" ng-controller="recommendCtrl">
- 
-</div>
-</script>
-
-<script type="text/ng-template" id=home.html>
+	<!-- Page 2 = Home --------------------------------------------------------- -->
+	<script type="text/ng-template" id=home.html>
 
 <div ng-app="postserviceApp" ng-controller="recommendCtrl">
-<center><input type="button" value="recommend" ng-click="clicked()"></center>
-</input>
+    
+<div class="container-fluid bg-2 text-center">
+              <h3 class="margin">What to display here?</h3>
+              <p>Ergo id est convenienter naturae vivere, a natura discedere. Quid, de quo nulla dissensio est? Duo Reges: constructio interrete. Aliud igitur esse censet gaudere, aliud non dolere. Teneo, inquit, finem illi videri nihil dolere.</p>
+                <center><input type="button" value="Get top 5" class="btn btn-info btn-lg" ng-click="clicked()"/>
+                    <input type="button" value="My History" class="btn btn-info btn-lg" ng-click="clicked()"/>
+    </center>
+</div>    
 {{msg}}
 <br>
 </div>
 
 <div ng-app="postserviceApp" ng-controller="homeCtrl">
-<h1>
-{{message}}
-</h1>
- <table width="180" style="color:black">
-<tr>
-    <th>Company Name</th>
-    <th>NSE/BSE</th> 
-    <th>Price</th>
-	<th>Date&Time</th>
-  </tr>
-    <tr ng-repeat="x in ndata">
+    
+    <!-- starts  ******************************** -->
+    
+    <table ng-table="stocksTable" >
+        <tr>
+            <th>Serial No</th>
+            <th>Company Name</th>
+            <th>NSE/BSE</th> 
+            <th>Price</th>
+          </tr>
+    <tr ng-repeat="x in data">
+        <td>{{ $index + 1 }}</td>
       <td>{{ x.t }}</td>
 	  <td>{{ x.e }}</td>
       <td>{{ x.l }}</td>
-	<td>{{x.ltDts}}</td>
+    </tr>
+</table>
+    
+    
+    <!-- ends ************ -->
+    <!--center>
+<div class="table-responsive">
+ <table>
+<tr>
+    <th>Serial No</th>
+    <th>Company Name</th>
+    <th>NSE/BSE</th> 
+    <th>Price</th>
+  </tr>
+    <tr ng-repeat="x in ndata">
+      <td>{{ $index + 1 }}</td>
+      <td>{{ x.t }}</td>
+	  <td>{{ x.e }}</td>
+      <td>{{ x.l }}</td>
     </tr>
   </table>
+        </div>
+    </center-->
 </div>
 </script>
 
-<script type="text/ng-template" id="login.html">
-<h1>{{message}}</h1>
-            <div class="container-fluid bg-2 text-center">
-              <h3 class="margin">Who are we?</h3>
-              <p>
-                  
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Respondent extrema primis, media utrisque, omnia omnibus. Quid de Pythagora? Piso igitur hoc modo, vir optimus tuique, ut scis, amantissimus. Ergo id est convenienter naturae vivere, a natura discedere. Quid, de quo nulla dissensio est? Duo Reges: constructio interrete. Aliud igitur esse censet gaudere, aliud non dolere. Teneo, inquit, finem illi videri nihil dolere.</p>
-            </div>
+	<!-- ____________________Save________________________-->
 
-<br> <br>
-<div ng-app="postserviceApp" ng-controller="postserviceCtrl">
 
-<!-- starts -->
+	<script type="text/ng-template" id="saved.html">
+<h1>Saved</h1>
+</script>
+
+	<script type="text/ng-template" id="save.html">
+<div ng-app="postserviceApp" ng-controller="saveCtrl">
+{{message}}
+</div>
+</script>
+	<!-- Page 3 = Show ________________________________________________________________-->
+	<script type="text/ng-template" id="recommend.html">
+<div ng-app="postserviceApp" ng-controller="recommendCtrl">
+ 
+</div>
+</script>
+
+
+	<script type="text/ng-template" id="show.html">
+    <font color="black"><center><h1>Stock price difference between BSE & NSE </h1></center>
+        <br> <br>
+    <div ng-app="postserviceApp" ng-controller="showRecCtrl">
+<div class="table-responsive">
+
+<div ng-app="postserviceApp" ng-controller="saveCtrl">
+
+<center><input type="button" value="save" ng-click="clicked()"></center>
+</div>
+
     <center>
-    <div class="container">
-            <div class="box">
-            <div class="container-fluid text-center">
-                
-                <!--Taking input as username-->
-                <div>    
-                    <i class="material-icons" style="font-size:48px;color:dimgrey">account_circle</i>
-                    <br>
-                    <input type="text" class="form-control" ng-model="username" placeholder="Enter username here" required/> <br>  
-                </div>     
-                
-                <!--Taking input as password-->
-                <div>    
-                    <i class="material-icons" style="font-size:48px;color:dimgrey">lock</i>
-                    <br>
-                    <input type="password" class="form-control" ng-model="password" placeholder="Enter password here" required/><br><br> 
-                </div>
-                    
-                <div class="form-group">
-                    <input type="button" value="Send" class="btn btn-info btn-lg" ng-click="postdata(username, password)" /> <br> <br>
-                    <span class="text-danger">{{msg}}</span>
-                </div>
+    <table>
+    <tr>
+        <th>Company Name</th>
+        <th>Difference</th> 
+        <th>Higher</th>
+        <th>Time</th>
+      </tr>
+        <tr ng-repeat="x in recdata | limitTo:5">
+          <td>{{ x.name }}</td>
+          <td>{{ x.diff }}</td>
+          <td>{{ x.higher }}</td>
+          <td>{{ x.dt }}</td>
+        </tr>
+      </table>
+        </center>
         </div>
-    </div>
-</div>
-</center>
+     </div>
+    </font>
+    </script>
 
-</div>
-
-		</script>
 
 </body>
 </html>
+
+
+
+
+<!--
+    <form>
+    <div class="input-group">
+      <input type="text" class="form-control" ng-model="search" placeholder="Search">
+        <div class="input-group-btn">
+        <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+      </div>
+    </div>
+  </form>
+-->

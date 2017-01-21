@@ -36,14 +36,17 @@ public class Recommendation {
 	
 	public void filter(String username,Stock stock[],Integer n)
 	{	History history=new History();
-		//User user=new User();
 		history.establish();
-		
+
 		System.out.println("\n\nHistory::");
+		System.out.println("\n\nHistory username::"+username);
+		System.out.println("\n\nHistory stock::"+stock[0].getName());
+		System.out.println("\n\nHistory usernameNumber::"+n);
 		for(int i=0;i<n;i++){
 			System.out.println("The differnce of "+stock[i].getName()+" is: "+f.format(stock[i].getDiff()));
 			history.setall(username,stock[i].getName(),stock[i].getNseValue(),stock[i].getBseValue(),stock[i].getHigher(),stock[i].getDiff(),stock[i].getDt());
 			System.out.println("\n");
+			System.out.println("filter****..");
 			history.sethistory();
 			}
 		history.displayHistory();

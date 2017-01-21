@@ -56,6 +56,8 @@ public class ApplicationController {
 		
 		return stocktop;
 	}
+	
+	
 	@Bean
 	public RootObject rootObjec() {
 		return new RootObject();

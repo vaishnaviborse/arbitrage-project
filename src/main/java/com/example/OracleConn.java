@@ -63,6 +63,7 @@ class OracleConn{
 		
 		try{
 		PreparedStatement pstmt=null;
+		System.out.println("Savehist======..");
 		pstmt=conn.prepareStatement("insert into history(username,companyName,nse,bse,higher,diff,timeDate) values (?,?,?,?,?,?,?)");
 		
 		Timestamp ts = Timestamp.valueOf(dt);

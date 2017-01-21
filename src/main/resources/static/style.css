@@ -1,54 +1,85 @@
-h1{
-    color:black;
-    text-align: center;
+h1 {
+	color: black;
+	text-align: center;
 }
 
-.box{
-    width: 480px;
-    padding: 25px;
-    background-color: aliceblue;
-    border: 5px solid gray;
+.box {
+	width: 350px;
+    height: 400px;
+	padding: 25px;
+    padding-bottom: 25px;
+	background-color: aliceblue;
+	border: 5px solid gray;
 }
 
+.material-icons
+{
+    font-size:50px;
+    color:dimgrey;
+    
+}
 @font-face {
-   font-family: 'Montserrat', sans-serif;
+	font-family: 'Montserrat', sans-serif;
 }
 
-.form-control
-            {
-                align-self: center;
-                padding: 10px;
-                color:black;
-                background-color:white;
-            }
+.form-control {
+	align-self: center;
+	padding: 10px;
+	color: black;
+	background-color: white;
+    font-size: 15px;
+    
+}
 
-.form-group
-    {
-        text-align: center;
-        align-content: center;
-    }
+.form-group {
+	text-align: center;
+	align-content: center;
+}
 
-.bg-2 
-  { 
-      background-color: #474e5d; /* Dark Blue */
-      color: #ffffff;
-  }
+.bg-2 {
+	background-color: #474e5d; /* Dark Blue */
+	color: #ffffff;
+}
+
+.container-fluid {
+	padding: 20px;
+}
 
 body {
-      font: 20px Montserrat, sans-serif;
-      line-height: 1.8;
-      color: #f5f6f7;
-      background-image: url(http://www.designbolts.com/wp-content/uploads/2014/03/Blue-Blur-Background1.jpg);
-      background-size: cover;
-    background-attachment: fixed;
-  }
-
-.home{
-	background-image: url(http://wallpaperswide.com/download/graph_abstract-wallpaper-1366x768.jpg);
+	font: 20px Montserrat, sans-serif;
+	line-height: 1.8;
+	color: #f5f6f7;
+	background-image:
+		url(http://www.designbolts.com/wp-content/uploads/2014/03/Blue-Blur-Background1.jpg);
+	background-size: cover;
+	background-attachment: fixed;
 }
 
-  p {font-size: 16px;}
+p {
+	font-size: 16px;
+}
 
-  .margin {margin-bottom: 45px;}
+.margin {
+	margin-bottom: 45px;
+}
 
+table {
+	border-collapse: collapse;
+	width: 70%;
+	color: black;
+	font-size: 20px;
+}
 
+th, td {
+	text-align: center;
+	padding: 20px;
+}
+
+tr:nth-child(even) {
+	background-color: #f5f6f7;
+}
+
+th {
+	background-color: #474e5d;
+	color: white;
+}

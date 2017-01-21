@@ -10,6 +10,7 @@ public class History {
 	Connection conn;
 	
 	public void setall(String user,String stockName,Double nse,Double bse,String higher,Double diff,String dt) {
+		System.out.println("setallll**/////**..");
 		this.stockName = stockName;
 		this.nse = nse;
 		this.bse=bse;
@@ -31,6 +32,7 @@ public class History {
 	
 	public void sethistory()
 	{
+		System.out.println("setHist****..");
 		Oconn.saveHistory(conn,user,stockName, nse, bse,higher,diff,dt);
 	}
 	
@@ -72,6 +74,5 @@ public class History {
 	public void setUsername(String user) {
 		this.user = user;
 	}
-	
-	
+
 }

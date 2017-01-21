@@ -1,5 +1,4 @@
-var app = angular.module('postserviceApp', [ 'ngRoute' ]);
-
+var app = angular.module('postserviceApp', [ 'ngRoute','ngTable' ]);
 
 app.config(function($routeProvider) {
 	$routeProvider
@@ -14,35 +13,57 @@ app.config(function($routeProvider) {
 	})
 	
 	.when('/recommend', {
-		templateUrl : 'recommend.html',
+		// templateUrl : 'recommend.html',
 		controller: 'recommCtrl'
 	})
 	.when('/show', {
 		templateUrl : 'show.html',
 		controller: 'showRecCtrl'
 	})
-	
+	.when('/save', {
+		templateUrl : 'save.html',
+		controller: 'saveCtrl'
+	})	
+	.when('/saved', {
+		templateUrl : 'saved.html',
+		// controller: 'saveCtrl'
+	})
 	.otherwise({ redirectTo: '/' });
 	
 	
 });
 
+
+
 app.controller('loginCtrl', function($scope){
 	$scope.message = "Hello, this is login";
 });
 
-app.controller('homeCtrl', function($scope, $http, $location){
+app.controller('homeCtrl', function($scope, $http, $location, ngTableParams,$defer){
 	$scope.message = "Hello, this is home";
 
 	    $http.get('/nifty-data').then(
 				function(response) {
 					if (response.data) {
 						$scope.ndata = response.data;
-						console.log($scope.ndata);
-					} else {
+                
+                        <!-- **** -->
+                        $scope.stocksTable = new ngTableParams({
+                                page: 1,
+                                count: 10
+                                }, 
+                                {
+                                total: $scope.ndata.length, 
+                                getData: function ($defer, params) {
+                                $scope.data = $scope.ndata.slice((params.page() - 1) * params.count(), params.page() * params.count());
+                                $defer.resolve($scope.data);
+                                }
+                            });
+                        
+					}else {
 						$scope.msg = "error";
 					}
-				}, function(response) {
+					} , function(response) {
 					$scope.msg = "Unsuccessful";
 					$scope.statusval = response.status;
 					$scope.statustext = response.statusText;
@@ -88,23 +109,8 @@ app.controller('postserviceCtrl', function($scope, $http, $location) {
 
 app.controller('recommendCtrl', function($scope, $http, $location){
 	$scope.clicked = function(){  
-    
-    $http.get('/get-acc-data').then(
-			function(response) {
-				if (response.data) {
-					$scope.alldata = response.data;
-					$scope.message="Recommendations";
-					$location.path('/show');
-				} else {
-					$scope.msg = "error";
-				}
-			}, function(response) {
-				$scope.msg = "Unsuccessful";
-				$scope.statusval = response.status;
-				$scope.statustext = response.statusText;
-				$scope.headers = response.headers();
-			});
-    };
+   				$location.path('/show');
+				}; 
 });
     app.controller('showRecCtrl', function($scope, $http, $location){
 
@@ -124,4 +130,27 @@ app.controller('recommendCtrl', function($scope, $http, $location){
     				});
     });
 
+
+
+    app.controller('saveCtrl', function($scope, $http, $location){
+    	$scope.clicked = function(){  
+	    $http.get('/save-history').then(
+				function(response) {
+					if (response.data) {
+						// $scope.recdata = response.data;
+						$scope.message="Saved";
+						$location.path="/saved"
+						
+						console.log($scope.recdata);
+					} else {
+						$scope.msg = "error";
+					}
+				}, function(response) {
+					$scope.msg = "Unsuccessful";
+					$scope.statusval = response.status;
+					$scope.statustext = response.statusText;
+					$scope.headers = response.headers();
+				});
+    	};
+});
 
